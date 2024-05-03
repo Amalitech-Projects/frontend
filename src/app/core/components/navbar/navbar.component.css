@@ -1,0 +1,137 @@
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 100%;
+    border-bottom: 1.4px solid rgb(212, 212, 212);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.062);
+    min-block-size: 4.5rem;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    inline-size: 100%;
+    margin: auto;
+    max-inline-size: 78rem;
+    padding: 0 10px;
+
+}
+
+.brandlogo-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img{
+    width: 40px;
+}
+
+.menu ul{
+    display: flex;
+}
+
+.login-signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.all-ctas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+.ctas{
+    font-weight: 500;
+}
+
+.ctas .cta{
+    padding: 10px;
+}
+
+.ctas .cta:hover{
+    text-decoration: underline;
+}
+
+.other-means{
+    display: none;
+}
+
+.other-means span img{
+    width: 20px;
+}
+
+.user-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+
+.menu-small{
+    display: none;
+}
+
+@media screen and (max-width: 35.938rem) {
+    nav {
+      min-block-size: 3.5rem;
+    }
+
+    .container{
+        padding: 0 20px;
+    }
+
+    .logo img{
+        width: 30px;
+    }
+
+    .all-ctas{
+        display: none;
+    }
+
+    .menu-small{
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-bottom: 3px solid #312ECB;
+        transform: translateY(-20px);
+        transition: 0.2s all ease;
+    }
+
+    .cta{
+        text-decoration: underline;
+    }
+
+    .login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .activeMenu{
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
