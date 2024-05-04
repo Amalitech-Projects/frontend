@@ -53,15 +53,11 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0;
+    gap: 30px;
 }
 
 .ctas{
     font-weight: 500;
-}
-
-.ctas .cta{
-    padding: 10px;
 }
 
 .ctas .cta:hover{
@@ -85,6 +81,13 @@ nav{
 
 .menu-small{
     display: none;
+}
+
+.trips{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
 }
 
 @media screen and (max-width: 35.938rem) {
@@ -133,5 +136,5 @@ nav{
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
-    }
+    }    
   }

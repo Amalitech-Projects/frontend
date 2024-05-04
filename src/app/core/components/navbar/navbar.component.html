@@ -11,7 +11,8 @@
     </div>
     <div class="login-signup ctas">
         <div class="all-ctas">
-            <span class="trips pointer">Trips</span>
+            <app-basket-button/>
+            <app-trips-button/>
             <span class="cta pointer">Sign</span>
             <span class="cta pointer">Register</span>
         </div>
@@ -19,10 +20,13 @@
             <span (click)="responsiveMenu()" class="material-symbols-outlined pointer">account_circle</span>
         </div>
     </div>
-   </div>
+</div>
 </nav>
 <div [ngClass]="{'activeMenu' : responsiveMenuActive}" class="menu-small">
-    <span class="trips pointer">Trips</span>
+    <div class="trips">
+        <app-basket-button/>
+        <app-trips-button/>
+    </div>
     <div class="login">
         <span class="cta pointer">Sign</span>
         <span class="cta pointer">Register</span>

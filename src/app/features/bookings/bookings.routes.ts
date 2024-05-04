@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page.component';
+import { BookingsComponent } from './bookings.component';
 
 export const routes: Routes = [
 
     {
         path: '',
-        component: LandingPageComponent,
+        component: BookingsComponent,
         loadChildren: () =>
-            import('../bookings/bookings.routes').then(
+            import('../bookings/components/booking-components.routes').then(
               (m) => m.routes
         ),
     }
