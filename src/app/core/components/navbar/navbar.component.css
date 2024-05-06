@@ -38,6 +38,11 @@ nav{
     width: 40px;
 }
 
+.logo h2{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 .menu ul{
     display: flex;
 }
@@ -116,7 +121,7 @@ nav{
         gap: 20px;
         padding: 20px;
         background-color: #fff;
-        border-bottom: 3px solid #312ECB;
+        border-bottom: 3px solid var(--primary-second-blue);
         transform: translateY(-20px);
         transition: 0.2s all ease;
     }

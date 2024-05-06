@@ -9,6 +9,10 @@ export const routes: Routes = [
     {
         path: '',
         component: FlightSearchComponent,
+        loadChildren: () =>
+            import('../components/flight-search/flight-category-components.routes').then(
+              (m) => m.routes
+        ),
     },
     {
         path: "hotels",

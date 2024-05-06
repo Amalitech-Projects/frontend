@@ -1,0 +1,59 @@
+.round-trip{
+    padding: 5px 0;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fields{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1.5px solid var(--black);
+    /* flex-basis: 50%; */
+    flex-grow: 1;
+}
+
+.to-from{
+    position: relative;
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: repeat(2,1fr);
+}
+
+
+.to-from .interchange{
+    position: absolute;
+    align-self: baseline;
+    justify-self: center;
+    margin-block-start: .375rem;
+    padding: 7px;
+    border-radius: 50px;
+    border: 1.5px solid var(--grey);
+    font-size: 20px;
+    background-color: var(--white);
+}
+
+.submit{
+    padding: 10px 20px;
+    background-color: var(--primary-first-blue);
+    color: var(--white);
+    border-radius: 30px;
+    font-weight: var(--default-text-weight);
+}

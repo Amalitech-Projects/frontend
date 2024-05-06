@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LoadingRequestsComponent } from './features/bookings/components/loading-requests/loading-requests.component';
 
 export const routes: Routes = [
 
@@ -9,5 +10,11 @@ export const routes: Routes = [
               (m) => m.routes
         ),
         title: "Travely | Book a Flight, Hotel and Trasport"
+    },
+    {
+        path: 'request',
+        component: LoadingRequestsComponent,
+        title: "Loading Request"
     }
+
 ];

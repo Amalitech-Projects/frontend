@@ -1,0 +1,39 @@
+.flight-search{
+    width: 100%;
+    padding: 10px;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.other-search{
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+
+.other-search ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1.2px solid grey;
+} 
+
+.flight-classes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-classes select{
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid var(--black);
+    background-color: var(--primary-light-blue);
+}

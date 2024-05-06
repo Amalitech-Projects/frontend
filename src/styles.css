@@ -1,3 +1,26 @@
+:root{
+    /* Text Variables */
+    --default-text-weight: 500;
+
+    /* Color Base */
+    --black: #000;
+    --white: #fff;
+
+    /* Brand Color */
+    --primary-first-blue: #007AFF;
+    --primary-second-blue: #312ECB;
+    --primary-light-blue: #cce5ff;
+
+    --primary-extra-light-blue: #e2f0ff;
+
+
+    /* Greys for underlining */
+    --grey: rgb(210, 210, 210);
+
+    /* Text Colors */
+    --grey-text: rgb(124, 124, 124);
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -19,8 +42,14 @@ ul{
 
 a{
     text-decoration: none;
+    color: var(--black);
 }
 
 .pointer{
     cursor: pointer;
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

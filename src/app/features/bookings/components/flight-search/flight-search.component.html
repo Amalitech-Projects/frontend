@@ -1,1 +1,21 @@
-<p>flight-search works!</p>
+<div class="flight-search">
+    <div class="container">
+        <div class="other-search">
+            <ul>
+                <li><a [routerLink]="['']">Round Trip</a></li>
+                <li><a [routerLink]="['one-way']">One Way</a></li>
+                <li><a [routerLink]="['multiple-flights']">Multiple</a></li>
+            </ul>
+            <span class="flight-classes" >
+                <select name="" id="">
+                    @for (item of flightClasses; track $index) {
+                        <option value="">{{item}}</option>
+                    }
+                </select>
+            </span>
+        </div>
+        <div class="search">
+            <router-outlet/>
+        </div>
+    </div>
+</div>

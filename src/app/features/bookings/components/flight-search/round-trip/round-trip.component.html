@@ -1,0 +1,38 @@
+<div class="round-trip">
+    <div class="container">
+        <div class="fields to-from">
+            <span class="input">
+                <span (click)="toggleLeaveFrom()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <span class="data">Leaving From</span>
+                </span>
+                <!-- @if(toggleOne){ -->
+                    <app-search-to-from class="default-position" [ngClass]="{'active-travel-input-component' : toggleOne}" placeholder="Leaving From"  (close)="toggleOne = $event"/>
+                <!-- } -->
+            </span>
+            <span class="input pointer">
+                <span (click)="toggleGoingTo()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <span class="data">Going To</span>
+                </span>
+                <app-search-to-from class="default-position" [ngClass]="{'active-travel-input-component' : toggleTwo}" placeholder="Going To" (close)="toggleTwo = $event"/>
+            </span>
+            <span (click)="toggleAnimateInterchange()" [ngClass]="{'toggle-interchange' : animateInterchange}" class="material-symbols-outlined interchange pointer">sync_alt</span>
+        </div>
+        <div class="fields">
+            <span class="input pointer">
+                <span class="material-symbols-outlined">today</span>
+                <span class="data">Dates</span>
+                <app-date-picker/>
+            </span>
+            <span class="input pointer">
+                <span (click)="togglePassengers()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="data">1 Traveler</span>
+                </span>
+                <app-passengers class="default-position" [ngClass]="{'active-travel-input-component' : toggleThree}" (close)="toggleThree = $event"/>
+            </span>
+        </div>
+        <span class="submit pointer">Search</span>
+    </div>
+</div>
