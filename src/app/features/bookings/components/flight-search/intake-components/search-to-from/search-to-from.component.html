@@ -3,17 +3,19 @@
         <div class="container">
             <span  (click)="closeButton()" class="material-symbols-outlined close-button">close</span>
             <div class="search-input">
-                <input type="text" #inputFeld [placeholder]="placeholder">
+                <input (input)="searchAirports()" name="keyword" [(ngModel)]="keyword" type="text" #inputFeld [placeholder]="placeholder">
             </div>
             <div class="list-of-airport">
-               @if (false) {
-                <span class="list">
-                    <span class="material-symbols-outlined flight">flight</span>
-                    <div class="airport-details">
-                        <span class="city-code">ACC</span>
-                        <span class="city-address">Accra, Ghana.</span>
-                    </div>
-                </span>
+               @if (true) {
+                @for (item of airportData; track $index) {
+                    <span class="list">
+                        <span class="material-symbols-outlined flight">flight</span>
+                        <div class="airport-details">
+                            <span class="city-code">{{item?.address?.cityCode}}</span>
+                            <span class="city-address">{{item?.address?.cityName + "," + item?.address?.countryName}}</span>
+                        </div>
+                    </span>
+                }
                } @else {
                    <div class="no-search">
                         <span class="material-symbols-outlined search-icon">search</span>
