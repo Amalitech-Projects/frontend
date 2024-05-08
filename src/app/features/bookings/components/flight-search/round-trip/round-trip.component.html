@@ -39,6 +39,6 @@
                 <app-passengers class="default-position" [ngClass]="{'active-travel-input-component' : toggleThree}" (passengers)="travelers = $event" (close)="toggleThree = $event"/>
             </span>
         </div>
-        <span class="submit pointer">Search</span>
+        <span (click)="sendToLoadingPage()" class="submit pointer">Search</span>
     </div>
 </div>

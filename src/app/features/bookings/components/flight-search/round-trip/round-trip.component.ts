@@ -4,6 +4,8 @@ import { NgClass } from '@angular/common';
 import { DatePickerComponent } from '../intake-components/date-picker/date-picker.component';
 import { PassengersComponent } from '../intake-components/passengers/passengers.component';
 import { FlightSearchRequest, Traveler } from '../../../../../services/constants/types/data.types';
+import { DataStoreService } from '../../../../../services/core/data-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-round-trip',
@@ -13,6 +15,10 @@ import { FlightSearchRequest, Traveler } from '../../../../../services/constants
   styleUrl: './round-trip.component.css'
 })
 export class RoundTripComponent {
+
+  constructor(private dataStore : DataStoreService, private router : Router){
+    this.getFlightClassCabin();
+  }
 
   leavingAirport : any;
   goingToAirport! : any;
@@ -105,7 +111,7 @@ export class RoundTripComponent {
           flightFilters: {
               cabinRestrictions: [
                   {
-                      cabin: "BUSINESS",
+                      cabin: this.getFlightClassCabin(),
                       coverage: "MOST_SEGMENTS",
                       originDestinationIds: ["1"]
                   }
@@ -116,6 +122,21 @@ export class RoundTripComponent {
           }
       }
   };
+  this.parseData(this.requestBody);
+  }
+
+  flightClass! : string;
+
+  getFlightClassCabin(){
+    this.dataStore.currentFlightClass.subscribe({next: (n : any) => this.flightClass = n});
+    console.log(this.flightClass);
+    return this.flightClass;
+  }
+
+  parseData(data  : any){
+    this.getFlightClassCabin();
+    this.dataStore.parseFlightRequest(data);
+    this.router.navigate(['../request'])
   }
 
 }

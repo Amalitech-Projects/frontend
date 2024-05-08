@@ -7,9 +7,9 @@
                 <li><a [routerLink]="['multiple-flights']">Multiple</a></li>
             </ul>
             <span class="flight-classes" >
-                <select name="" id="">
+                <select [(ngModel)]="flightClass" name="" id="">
                     @for (item of flightClasses; track $index) {
-                        <option value="">{{item}}</option>
+                        <option (click)="currentFlightClass(item)" value="" [defaultSelected]="flightClass">{{item}}</option>
                     }
                 </select>
             </span>

@@ -23,7 +23,7 @@ export class FlightServiceService {
 
 
   getRoundTripFlight ( body : object){
-    return this.http.post(API_BASE_URL + "/api/v1/request-service/flights", body, this.requestOptions);
+    return this.http.post(API_BASE_URL + "/api/v1/request-service/multiple-flights", body, this.requestOptions);
   }
 
   getAiportCode( keyword : keyword){
