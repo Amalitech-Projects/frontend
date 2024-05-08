@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../../../services/core/auth.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -12,10 +13,21 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class FlightSearchComponent {
 
   flightClasses : String[] = [
-    "Economy",
-    "Premium Economy",
-    "Business Class",
-    "First Class"
+    "ECONOMY",
+    "BUSINESS",
+    "FIRST-CLASS"
   ]
+
+  test! : String;
+
+  constructor(private tests : AuthService){
+    tests.test().subscribe({
+      next: (n) => {
+        this.test = n;
+      }
+    })
+  }
+
+
 
 }

@@ -17,26 +17,57 @@ export class SearchToFromComponent {
   
   @Output() close = new EventEmitter<boolean>();
 
-  airportData :  any;
+  @Output() airport = new EventEmitter<Array<any>>;
+
+  airportData : Array<any> = [];
 
 
   closeButton(){
     this.close.emit(false);
   }
 
-  keyword! : string;
+  keyword : string =  "";
+  loading = false;
+  empty : boolean = true;
 
   constructor(private flightService : FlightServiceService){}
 
-    async searchAirports() : Promise<boolean>{
-    await this.flightService.getAiportCode(this.keyword).subscribe({
-      next: (n : any) => {
-        this.airportData = n;
-        console.log(n);
-        return true;
-      },
-    })
-    return false;
-  }  
+        searchAirports(){
+          // Loader
+          this.loading = true;
+          this.empty = false;
 
+          if(this.keyword.length == 0){
+            this.airportData = [];
+            this.loading = false;
+            this.empty = true;
+          }
+
+          // API Request
+          this.flightService.getAiportCode({
+            keyword: this.keyword
+          }).subscribe({
+            next: (n : any) => {
+              this.airportData = n;
+              console.log(n);
+              this.loading = false;
+          },
+        })
+      }  
+
+      emitDataToInput(airport : Array<any>){
+        this.airport.emit(airport);
+        console.log(airport); 
+      }
+
+
+      clearData(){
+        this.keyword = "";
+        this.airport.emit(undefined)
+        this.closeButton();
+      }
+
+  isEmpty(): boolean {
+    return this.airportData.length <= 0  && this.loading === false;
+  }
 }

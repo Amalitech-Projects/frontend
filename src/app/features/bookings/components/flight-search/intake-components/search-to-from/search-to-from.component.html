@@ -1,27 +1,72 @@
 <div class="search-airports">
     <div class="main">
         <div class="container">
-            <span  (click)="closeButton()" class="material-symbols-outlined close-button">close</span>
             <div class="search-input">
                 <input (input)="searchAirports()" name="keyword" [(ngModel)]="keyword" type="text" #inputFeld [placeholder]="placeholder">
+                @if(keyword.length > 0){
+                    <button (click)="clearData()" class="material-symbols-outlined clear-airport-data">backspace</button>
+                }
+                <span  (click)="closeButton()" class="material-symbols-outlined close-button">close</span>
             </div>
             <div class="list-of-airport">
-               @if (true) {
+               @if (!loading && airportData.length > 0) {
                 @for (item of airportData; track $index) {
-                    <span class="list">
+                    <span class="list pointer">
                         <span class="material-symbols-outlined flight">flight</span>
-                        <div class="airport-details">
+                        <div class="airport-details" (click)="emitDataToInput(item)" (click)="closeButton()">
                             <span class="city-code">{{item?.address?.cityCode}}</span>
-                            <span class="city-address">{{item?.address?.cityName + "," + item?.address?.countryName}}</span>
+                            <span class="city-address">{{item.name + ". " + item?.address?.cityName + "," + item?.address?.countryCode}}</span>
                         </div>
                     </span>
                 }
-               } @else {
-                   <div class="no-search">
-                        <span class="material-symbols-outlined search-icon">search</span>
-                        <span>Search by city or airport</span>
-                   </div>
                } 
+               @else if(loading){
+                 <div class="loading">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        </div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        </div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        </div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        </div>
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                    </div>
+                    <div class="flex items-center justify-between pt-4">
+                        <div>
+                            <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                        </div>  
+                        <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+                    </div>
+                    <span class="sr-only">Loading...</span>
+                 </div>
+               } 
+               @else if(isEmpty()) {
+                <div class="no-search">
+                     <span class="material-symbols-outlined search-icon">search</span>
+                     <span>Search by city or airport</span>
+                </div>
+            } 
+               
             </div>
         </div>
     </div>

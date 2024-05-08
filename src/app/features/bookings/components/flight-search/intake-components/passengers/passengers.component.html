@@ -5,25 +5,25 @@
             <div class="passenger">
                 <span>Adult</span>
                 <div class="adjust">
-                    <span class="material-symbols-outlined  count-button">remove</span>
-                    <span class="number">1</span>
-                    <span class="material-symbols-outlined count-button">add</span>
+                    <span (click)="removeTraveler('ADULT')" class=" material-symbols-outlined  count-button">remove</span>
+                    <span class="number">{{travelersRecord["ADULT"]?.length || 1}}</span>
+                    <span (click)="addTraveler('ADULT')" class="material-symbols-outlined count-button">add</span>
                 </div>
             </div>
             <div class="passenger">
                 <span>Children</span>
                 <div class="adjust">
-                    <span class="material-symbols-outlined count-button">remove</span>
-                    <span class="number">1</span>
-                    <span class="material-symbols-outlined count-button">add</span>
+                    <span (click)="removeTraveler('CHILDREN')" class="material-symbols-outlined count-button">remove</span>
+                    <span class="number">{{travelersRecord['CHILDREN']?.length || 0}}</span>
+                    <span (click)="addTraveler('CHILDREN')" class="material-symbols-outlined count-button">add</span>
                 </div>
             </div>
             <div class="passenger">
                 <span>Infants</span>
                 <div class="adjust">
-                    <span class="material-symbols-outlined  count-button">remove</span>
-                    <span class="number">1</span>
-                    <span class="material-symbols-outlined  count-button">add</span>
+                    <span (click)="removeTraveler('INFANTS')" class="material-symbols-outlined  count-button">remove</span>
+                    <span class="number">{{travelersRecord['INFANTS']?.length || 0}}</span>
+                    <span (click)="addTraveler('INFANTS')" class="material-symbols-outlined  count-button">add</span>
                 </div>
             </div>
         </div>

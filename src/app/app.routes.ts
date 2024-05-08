@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoadingRequestsComponent } from './features/bookings/components/loading-requests/loading-requests.component';
+import { LoginComponent } from './features/login/login.component';
 
 export const routes: Routes = [
 
@@ -15,6 +16,10 @@ export const routes: Routes = [
         path: 'request',
         component: LoadingRequestsComponent,
         title: "Loading Request"
+    },
+    {
+        path: "login",
+        component: LoginComponent
     }
 
 ];
