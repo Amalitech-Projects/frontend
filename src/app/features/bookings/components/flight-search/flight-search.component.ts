@@ -16,9 +16,8 @@ export class FlightSearchComponent {
 
   flightClasses : string[] = [
     "ECONOMY",
-    "BUSINESS",
-    "FIRST-CLASS"
-  ]
+    "BUSINESS"
+ ]
 
   flightClass : string = "ECONOMY";
 
@@ -31,6 +30,5 @@ export class FlightSearchComponent {
   currentFlightClass(item : string){
     this.dataStore.parseFlightClass(item);
   }
-
 
 }

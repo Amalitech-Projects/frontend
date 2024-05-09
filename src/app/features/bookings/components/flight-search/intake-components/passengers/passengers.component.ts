@@ -58,6 +58,7 @@ addTraveler(key: string) {
   }else{
     this.travelersRecord[key].push(newTraveler)
   }
+
   this.totalPassengers()
 }
 
