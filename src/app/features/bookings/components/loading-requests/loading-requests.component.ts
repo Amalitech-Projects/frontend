@@ -24,7 +24,6 @@ export class LoadingRequestsComponent implements OnInit{
           console.log(n); 
         }
       });
-
       this.getFlight();
   }
 
@@ -32,8 +31,14 @@ export class LoadingRequestsComponent implements OnInit{
     this.flight.getRoundTripFlight(this.newRequest).subscribe({
       next: (n : any) => {
         this.dataStore.parseFlightData(n);
+      },
+      error: (e) => {
+        this.router.navigate([''])
+      },
+      complete: () => {
+        this.router.navigate(['/flight-requests'])
       }
-    })
+    });
   }
 
 }

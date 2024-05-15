@@ -1,26 +1,44 @@
 <div class="one-way">
     <div class="container">
         <div class="fields to-from">
-            <span class="input pointer">
-                <span class="material-symbols-outlined">location_on</span>
-                <span class="data">Leaving From</span>
+            <span class="input">
+                <span (click)="toggleLeaveFrom()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">location_on</span>
+                    @if(leavingAirport == undefined){
+                        <span class="data">Leaving From</span>
+                    } @else {
+                        <span class="data">{{leavingAirport?.address?.cityCode + ", " + leavingAirport?.name}}</span>
+                    }
+                </span>
+                    <app-search-to-from class="default-position" [ngClass]="{'active-travel-input-component' : toggleOne}" placeholder="Leaving From" (airport)="leavingAirport = $event"  (close)="toggleOne = $event"/>
             </span>
             <span class="input pointer">
-                <span class="material-symbols-outlined">location_on</span>
-                <span class="data">Going To</span>
+                <span (click)="toggleGoingTo()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">location_on</span>
+                    @if(goingToAirport == undefined){
+                        <span class="data">Going To</span>
+                    } @else {
+                        <span class="data">{{goingToAirport?.address?.cityCode + ", " + goingToAirport?.name}}</span>
+                    }
+                </span>
+                <app-search-to-from class="default-position" [ngClass]="{'active-travel-input-component' : toggleTwo}" placeholder="Going To" (airport)="goingToAirport = $event"  (close)="toggleTwo = $event"/>
             </span>
-            <span class="material-symbols-outlined interchange pointer">sync_alt</span>
+            <span (click)="toggleAnimateInterchange()" [ngClass]="{'toggle-interchange' : animateInterchange}" class="material-symbols-outlined interchange pointer">sync_alt</span>
         </div>
         <div class="fields">
             <span class="input pointer">
                 <span class="material-symbols-outlined">today</span>
-                <span class="data">One Day Date</span>
+                <span class="data">Dates</span>
+                <nz-date-picker [(ngModel)]="date" [nzFormat]="dateFormat" (ngModelChange)="onChange($event)"/>
             </span>
             <span class="input pointer">
-                <span class="material-symbols-outlined">person</span>
-                <span class="data">1 Traveler</span>
+                <span (click)="togglePassengers()" class="toggle-button pointer">
+                    <span class="material-symbols-outlined">person</span>
+                    <span class="data">{{travelers.length}} Traveler</span>
+                </span>
+                <app-passengers class="default-position" [ngClass]="{'active-travel-input-component' : toggleThree}" (passengers)="travelers = $event" (close)="toggleThree = $event"/>
             </span>
         </div>
-        <span class="submit pointer">Search</span>
+        <span (click)="sendToLoadingPage()" class="submit pointer">Search</span>
     </div>
 </div>

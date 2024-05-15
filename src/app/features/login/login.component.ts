@@ -23,9 +23,19 @@ export class LoginComponent {
       password: this.password
     }).subscribe({
       next: (n:any) => {
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
       }
     })
   }
 
+  redirectUrl! : string;
+
+  googleOAuthRedirect(){
+    this.auth.googleOAuth().subscribe({
+      next: (n:any) =>{
+        this.redirectUrl = n.redirectUri;
+        window.location.href = this.redirectUrl;
+      }
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoadingRequestsComponent } from './features/bookings/components/loading-requests/loading-requests.component';
 import { LoginComponent } from './features/login/login.component';
+import { OauthVerifierComponent } from './features/oauth-verifier/oauth-verifier.component';
 
 export const routes: Routes = [
 
@@ -20,6 +21,10 @@ export const routes: Routes = [
     {
         path: "login",
         component: LoginComponent
+    },
+    {
+        path: 'oauth-google',
+        component: OauthVerifierComponent
     }
 
 ];

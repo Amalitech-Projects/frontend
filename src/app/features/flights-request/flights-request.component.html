@@ -1,1 +1,28 @@
-<app-navbar/>
+<div class="requests">
+    <div class="container">
+        <div class="flights">
+            @for (item of flightsData; track $index) {
+                <span class="flight-data">
+                    <div class="flight-details">
+                        <div class="details">
+                            <span class="head">{{formatDateTo12Hour(item.itineraries[$index].segments[$index].departure.at) + " to " + formatDateTo12Hour(item.itineraries[$index].segments[$index].arrival.at)}}</span>
+                            <span class="main">{{item.itineraries[$index].segments[$index].departure.iataCode}} to {{item.itineraries[$index].segments[$index].arrival.iataCode}}</span>
+                            <span class="main">{{item.validatingAirlineCodes}}</span>
+                        </div>
+                        <div class="details">
+                            <span class="main">{{formatDuration(item.itineraries[$index].duration)}}</span>
+                            <span class="main">4h 15min in London(LHR), 4h 31min in ACCRA</span>
+                        </div>
+                        <div class="details">   
+                            <span class="main">{{item.price.currency + " " + item.travelerPricings[$index].price.total}}</span>
+                            <span class="main">Roundtrip per traveler</span>
+                        </div>
+                    </div>
+                    <div class="flight-includes">
+                        <span class="main">Includes</span>
+                    </div>
+                </span>
+            }
+        </div>
+    </div>
+</div>

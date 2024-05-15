@@ -17,7 +17,7 @@ export class SearchToFromComponent {
   
   @Output() close = new EventEmitter<boolean>();
 
-  @Output() airport = new EventEmitter<Array<any>>;
+  @Output() airport = new EventEmitter<Array<any>>();
 
   airportData : Array<any> = [];
 
@@ -52,6 +52,9 @@ export class SearchToFromComponent {
               console.log(n);
               this.loading = false;
           },
+          error: (e) => {
+            this.isEmpty(); 
+          }
         })
       }  
 

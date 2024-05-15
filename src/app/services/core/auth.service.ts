@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { API_BASE_URL, API_BASE_URL_TEST_LOGIN } from '../constants/api.base';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Register, Success, VerifiedUser, loginDetails } from '../constants/types/data.types';
+import { Register, Success, VerifiedUser, callbackRequest, loginDetails } from '../constants/types/data.types';
+import { API_BASE_URL, API_BASE_URL_OAUTH } from '../constants/api.base';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,15 @@ export class AuthService {
   }
 
   login(formData: loginDetails) {
-    return this.http.post<VerifiedUser>(`${API_BASE_URL_TEST_LOGIN}/api/v1/auth/login`, formData);
+    return this.http.post<VerifiedUser>(`${API_BASE_URL}/api/v1/auth/login`, formData);
+  }
+
+  googleOAuth() {
+    return this.http.get<VerifiedUser>(`${API_BASE_URL_OAUTH}/api/v1/oauth/login/oauth/google`);
   }
   
-  test() {
-    return this.http.get<String>(`${API_BASE_URL}/api/v1/request-service/`);
+  googleCallBackRequest(formData : callbackRequest){
+    return this.http.post<VerifiedUser>(`${API_BASE_URL_OAUTH}/api/v1/oauth/auth/callback`, formData);
   }
-  // verifyEmail(user: Verify) {
-  //   return this.http.post<VerifiedUser>(`${API_BASE_URL}/auth/verify`, user);
-  // }
-  
 
 }

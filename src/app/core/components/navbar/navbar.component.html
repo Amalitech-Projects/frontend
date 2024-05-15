@@ -13,7 +13,7 @@
         <div class="all-ctas">
             <app-basket-button/>
             <app-trips-button/>
-            <span class="cta pointer">Sign</span>
+            <span [routerLink]="['login']" class="cta pointer">Sign</span>
             <span class="cta pointer">Register</span>
         </div>
         <div class="user-profile">
@@ -28,7 +28,7 @@
         <app-trips-button/>
     </div>
     <div class="login">
-        <a [routerLink]="['/login']" class="cta pointer">Sign</a>
+        <a [routerLink]="['login']" class="cta pointer">Sign</a>
         <a class="cta pointer">Register</a>
     </div>
 </div>

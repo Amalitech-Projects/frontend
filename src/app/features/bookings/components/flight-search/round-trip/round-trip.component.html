@@ -29,7 +29,7 @@
             <span class="input pointer">
                 <span class="material-symbols-outlined">today</span>
                 <span class="data">Dates</span>
-                <app-date-picker/>
+                <app-date-picker (interval)="dateIntervals = $event"/>
             </span>
             <span class="input pointer">
                 <span (click)="togglePassengers()" class="toggle-button pointer">

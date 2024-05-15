@@ -3,7 +3,7 @@ import { SearchToFromComponent } from '../intake-components/search-to-from/searc
 import { NgClass } from '@angular/common';
 import { DatePickerComponent } from '../intake-components/date-picker/date-picker.component';
 import { PassengersComponent } from '../intake-components/passengers/passengers.component';
-import { FlightSearchRequest, Traveler } from '../../../../../services/constants/types/data.types';
+import { FlightSearchRequest, TravelDateTime, Traveler } from '../../../../../services/constants/types/data.types';
 import { DataStoreService } from '../../../../../services/core/data-store.service';
 import { Router } from '@angular/router';
 
@@ -26,6 +26,8 @@ export class RoundTripComponent {
   toggleOne: boolean = false;
   toggleTwo: boolean = false;
   toggleThree: boolean = false;
+
+  dateIntervals! : TravelDateTime;
 
   travelers : any[] = [
     {
@@ -90,7 +92,7 @@ export class RoundTripComponent {
               originLocationCode: this.leavingAirport?.address?.cityCode,
               destinationLocationCode: this.goingToAirport?.address?.cityCode,
               departureDateTimeRange: {
-                  date: "2024-05-12",
+                  date: this.dateIntervals.start,
                   time: "10:00:00"
               }
           },
@@ -99,7 +101,7 @@ export class RoundTripComponent {
               originLocationCode: this.goingToAirport?.address?.cityCode,
               destinationLocationCode: this.leavingAirport?.address?.cityCode,
               departureDateTimeRange: {
-                  date: "2024-12-02",
+                  date: this.dateIntervals.end,
                   time: "17:00:00"
               }
           }
@@ -117,7 +119,7 @@ export class RoundTripComponent {
                   }
               ],
               carrierRestrictions: {
-                  excludedCarrierCodes: ["AA", "TP", "AZ"]
+                  excludedCarrierCodes: ["AA", "TP"]
               }
           }
       }

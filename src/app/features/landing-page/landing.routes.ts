@@ -10,5 +10,6 @@ export const routes: Routes = [
             import('../bookings/bookings.routes').then(
               (m) => m.routes
         ),
+        
     }
 ];

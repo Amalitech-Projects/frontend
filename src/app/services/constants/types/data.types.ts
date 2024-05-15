@@ -19,6 +19,11 @@ export type loadingStatus = {
    complete : boolean;
 }
 
+export type callbackRequest = {
+    code: string;
+    registrationId : string
+}
+
 export type Success = {
     message: string;
   };
@@ -83,4 +88,10 @@ export interface FlightSearchRequest {
     travelers: Traveler[];
     sources: string[];
     searchCriteria: SearchCriteria;
+}
+
+
+// Google OAuth Response Login 
+export interface GoogleOAuthResponse{
+
 }

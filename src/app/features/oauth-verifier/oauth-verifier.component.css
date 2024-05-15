@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .logo{
@@ -22,8 +22,24 @@
     gap: 10px;
 }
 
-.logo h1{
-    font-size: 2rem;
-    font-weight:700;
+.oauth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
+.oauth span{
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.oauth img{
+    width: 60px;
+}
+
+@media screen and (max-width:900px) {
+    .oauth img{
+        width: 10svw;
+    }
+}

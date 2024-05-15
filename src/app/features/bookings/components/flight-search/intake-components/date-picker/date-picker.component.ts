@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TravelDateTime } from '../../../../../../services/constants/types/data.types';
 declare var $: any; // Import jQuery
 
 @Component({
@@ -15,15 +16,19 @@ export class DatePickerComponent implements AfterViewInit{
 
   constructor() { }
 
+  @Output() interval = new EventEmitter<TravelDateTime>();
   
+  travelDT! : TravelDateTime;
 
   ngAfterViewInit() {
-    // Assuming you have a library that handles date range picker functionality
-    // Replace this with your actual date range picker library initialization code
     $(this.daterangeInput.nativeElement).daterangepicker({
       opens: 'left'
     }, (start: any, end: any, label: any) => {
-      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      this.travelDT = {
+        start: start.format('YYYY-MM-DD') ,
+        end: end.format('YYYY-MM-DD') 
+      }
+      this.interval.emit(this.travelDT);
     });
   }
 
