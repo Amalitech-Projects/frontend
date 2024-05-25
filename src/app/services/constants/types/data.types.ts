@@ -1,18 +1,56 @@
-export type loginDetails = {
+export interface LoginDetails {
     email : string;
     password : string;
+}
+
+export type VerifyEmail = {
+    email : string;
+    code : string;
+}
+
+export interface Register  extends LoginDetails {
+    username: string;
+}
+export type forgotPasswordRequest ={
+  email : string
+}
+
+export type ForgotPassword ={
+  email : string
+  code : string
+  newPassword : string
+}
+
+export type hotelOffers ={
+        geoId: string
+        checkIn: string
+        checkOut: string
+        pageNumber: number
+        currencyCode: "USD"    
+}
+
+export interface addCard {
+    userId : string
+    cardNumber :  string 
+    cardHolderName : string
+    expirationDate : string
+    cvv : string
+}
+
+export type initPayment ={
+        email : string
+        amount : string
+        metaData : []
+}
+
+export type query ={
+  query : string
 }
 
 export type keyword ={
   keyword : string
 }
 
-export type Register = {
-    firstName: string;
-    lastName : string;
-    email : string;
-    password : string;
-}
 
 export type loadingStatus = {
    onloading : boolean;
@@ -20,8 +58,8 @@ export type loadingStatus = {
 }
 
 export type callbackRequest = {
-    code: string;
-    registrationId : string
+    code: string | null;
+    registrationId : string | null;
 }
 
 export type Success = {
@@ -95,3 +133,11 @@ export interface FlightSearchRequest {
 export interface GoogleOAuthResponse{
 
 }
+
+export interface AuthenticatedUser {
+    id: string;
+    firstName: string;
+    email: string;
+    lastName: string | null;
+    roles: string;
+  }

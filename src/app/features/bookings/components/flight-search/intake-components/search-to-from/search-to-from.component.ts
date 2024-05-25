@@ -73,4 +73,6 @@ export class SearchToFromComponent {
   isEmpty(): boolean {
     return this.airportData.length <= 0  && this.loading === false;
   }
+
+  
 }

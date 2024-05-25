@@ -12,26 +12,49 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OauthVerifierComponent implements OnInit{
 
-  constructor(private auth : AuthService, private route : ActivatedRoute, private router : Router){}
+  constructor( 
+    private auth : AuthService, 
+    private route : ActivatedRoute, 
+    private router : Router
+  ){}
 
   paramsData! : callbackRequest;
 
-ngOnInit(): void {  
-
+  ngOnInit(): void {  
   // get params for callback
-  this.route.queryParams.subscribe(params => {
-    this.paramsData.code = params['code'];
-    this.paramsData.registrationId = params['registrationId'];
-  })
+    this.getParams();
 
-    this.auth.googleCallBackRequest(this.paramsData).subscribe({
-      next: (n) => {
+    // Assuming getParams ensures paramsData.code and paramsData.registrationId are not null
+  this.auth.googleCallBackRequest({
+    code: this.paramsData.code,
+    registrationId: this.paramsData.registrationId
+  }).subscribe({
+    next: (n:any) => {
+      console.log(n);
+      this.auth.saveUserAndToken(n.user, n.token);
+    },
+    error: (e) => {
+      console.log(e);
+    },
+    complete: () => {
+      this.router.navigate(['']);
+    }
+    });
+  }
 
-      },
-      complete: () => {
-        this.router.navigate(['']);
-      }
-    })
+  getParams() {
+    const code = this.route.snapshot.queryParamMap.get('code');
+    const registrationId = this.route.snapshot.queryParamMap.get('registrationId');
+
+    // Handling potential null values with a fallback or error handling:
+    if (code === null || registrationId === null) {
+        console.error("OAuth parameters missing in the URL.");
+        this.paramsData = { code: '', registrationId: '' }; // Providing a fallback or consider error handling
+        // Alternatively, handle this condition differently, e.g., show an error message or redirect.
+    } else {
+       this.paramsData = { code, registrationId };
+    }
 }
+
 
 }

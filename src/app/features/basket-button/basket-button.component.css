@@ -1,0 +1,21 @@
+.basket{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items{
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    background-color: #000;
+    font-size: 15px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 30px;
+}

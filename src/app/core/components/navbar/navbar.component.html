@@ -14,10 +14,18 @@
             <app-basket-button/>
             <app-trips-button/>
             <span [routerLink]="['login']" class="cta pointer">Sign</span>
-            <span class="cta pointer">Register</span>
+            <span class="cta pointer" [routerLink]="['register']">Register</span>
         </div>
         <div class="user-profile">
+           @if(!noUser){
             <span (click)="responsiveMenu()" class="material-symbols-outlined pointer">account_circle</span>
+           } @else {
+              <span (click)="responsiveMenu()" class="user-cirlce">{{profileInitial()}}
+              <div [ngClass]="{'activeLogout' : responsiveMenuLogout}" class="menu ">
+                 <span (click)="logout()">Logout</span>
+              </div>
+            </span>
+           }
         </div>
     </div>
 </div>
@@ -29,6 +37,6 @@
     </div>
     <div class="login">
         <a [routerLink]="['login']" class="cta pointer">Sign</a>
-        <a class="cta pointer">Register</a>
+        <a [routerLink]="['register']" class="cta pointer">Register</a>
     </div>
 </div>

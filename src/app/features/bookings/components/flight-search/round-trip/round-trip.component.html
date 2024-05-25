@@ -2,13 +2,14 @@
     <div class="container">
         <div class="fields to-from">
             <span class="input">
-                <span (click)="toggleLeaveFrom()" class="toggle-button pointer">
+                <span class="toggle-button pointer">
                     <span class="material-symbols-outlined">location_on</span>
-                    @if(leavingAirport == undefined){
+                    <input type="text">
+                    <!-- @if(leavingAirport == undefined){
                         <span class="data">Leaving From</span>
                     } @else {
                         <span class="data">{{leavingAirport?.address?.cityCode + ", " + leavingAirport?.name}}</span>
-                    }
+                    } -->
                 </span>
                     <app-search-to-from class="default-position" [ngClass]="{'active-travel-input-component' : toggleOne}" placeholder="Leaving From" (airport)="leavingAirport = $event"  (close)="toggleOne = $event"/>
             </span>
