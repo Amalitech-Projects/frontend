@@ -16,7 +16,7 @@ export class AuthService {
   constructor(private http : HttpClient) {
      this.headersWithJwt = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `Bearer ${this.getToken()}`
     });
      
     this.headersWithoutJwt = new HttpHeaders({
